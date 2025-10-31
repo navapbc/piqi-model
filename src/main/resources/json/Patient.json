@@ -72,7 +72,7 @@
       },
       "additionalProperties": false
     },
-    "Codings": {
+    "Coding": {
       "type": "object",
       "properties": {
         "code": {
@@ -96,7 +96,7 @@
         "codings": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/Codings"
+            "$ref": "#/$defs/Coding"
           }
         }
       },
@@ -120,7 +120,7 @@
         "codings": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/Codings"
+            "$ref": "#/$defs/Coding"
           }
         }
       },

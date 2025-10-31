@@ -38,6 +38,7 @@ For Maven in `pom.xml`:
 
 
 ## Notes
+* The schema was created as a best effort from the documentation on the HL7 site.  It is an evolving standard so expect changes.
 * *jsonschema2pojo* has many different flags that may be set.  `build.gradle.kts` configures it to use mostly defaults.  It may be necessary to modify the configuration to suit your needs.
 * `SimpleAttribute` is the one class that was not able to be generated in a way that serialized properly according to the PIQI data model.  An additional Gradle task was introduced in `build.gradle.kts` to substitute a hand-coded version that was better suited.
 
