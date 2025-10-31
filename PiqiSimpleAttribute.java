@@ -5,11 +5,11 @@ import javax.annotation.processing.Generated;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 @Generated("jsonschema2pojo")
-public class SimpleAttribute {
+public class PiqiSimpleAttribute {
 
-    public SimpleAttribute() {}
+    public PiqiSimpleAttribute() {}
 
-    public SimpleAttribute(String value) {
+    public PiqiSimpleAttribute(String value) {
         this.value = value;
     }
 
@@ -31,7 +31,7 @@ public class SimpleAttribute {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(SimpleAttribute.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(PiqiSimpleAttribute.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("value");
         sb.append('=');
         sb.append(((this.value == null)?"<null>":this.value));
@@ -56,10 +56,10 @@ public class SimpleAttribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof SimpleAttribute) == false) {
+        if ((other instanceof PiqiSimpleAttribute) == false) {
             return false;
         }
-        SimpleAttribute rhs = ((SimpleAttribute) other);
+        PiqiSimpleAttribute rhs = ((PiqiSimpleAttribute) other);
         return ((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value)));
     }
 

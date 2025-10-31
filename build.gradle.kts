@@ -42,6 +42,8 @@ jsonSchema2Pojo {
     targetPackage = "com.navapbc.piqi.model" // Package name for generated classes
     generateBuilders = false // Generate builder methods for classes
     includeAdditionalProperties = false
+    classNamePrefix = "Piqi"
+    removeOldOutput = true
 }
 
 tasks.register("myPostGenerationTask") {
@@ -49,7 +51,7 @@ tasks.register("myPostGenerationTask") {
     doLast {
         println("Executing my custom task after jsonschema2pojo generation!")
         copy {
-            from("${project.rootDir}/SimpleAttribute.java")
+            from("${project.rootDir}/PiqiSimpleAttribute.java")
             into("${project.rootDir}/src/main/java/com/navapbc/piqi/model")
         }
     }
