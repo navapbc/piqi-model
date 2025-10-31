@@ -21,18 +21,6 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "${group}"
-            artifactId = "piqi-model"
-            version = "${version}"
-
-            from(components["java"])
-        }
-    }
-}
-
 tasks.test {
     useJUnitPlatform()
 }
@@ -60,3 +48,23 @@ tasks.register("myPostGenerationTask") {
 tasks.named("compileJava") { // Or "compileKotlin" for Kotlin projects
     dependsOn("myPostGenerationTask")
 }
+
+tasks.register<Jar>("sourcesJar") {
+    dependsOn("generateJsonSchema2Pojo")
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "${group}"
+            artifactId = "piqi-model"
+            version = "${version}"
+
+            from(components["java"])
+            artifact(tasks.named("sourcesJar").get())
+        }
+    }
+}
+
