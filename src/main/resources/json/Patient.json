@@ -1,0 +1,403 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Patient",
+  "description": "The PIQI Patient data model.",
+  "type": "object",
+  "properties": {
+    "Allergy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Allergy"
+      }
+    },
+    "Condition": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Condition"
+      }
+    },
+    "Demographics": {
+      "$ref": "#/$defs/Demographics"
+    },
+    "HealthAssessments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/HealthAssessment"
+      }
+    },
+    "Immunization": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Immunization"
+      }
+    },
+    "LabResult": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LabResult"
+      }
+    },
+    "MedicalDevice": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MedicalDevice"
+      }
+    },
+    "Medication": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Medication"
+      }
+    },
+    "Procedure": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Procedure"
+      }
+    },
+    "VitalSign": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/VitalSign"
+      }
+    }
+  },
+  "$defs": {
+    "SimpleAttribute": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Codings": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "display": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "system": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CodeableConcept": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "codings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Codings"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ObservationValue": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "type": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "number": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "number2": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "codings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Codings"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "RangeValue": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "lowValue": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "highValue": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Allergy": {
+      "type": "object",
+      "properties": {
+        "substance": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "category": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "reaction": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "effectiveDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "severity": {
+          "$ref": "#/$defs/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Condition": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "conditionStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "conditionType": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "onsetDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "resolutionDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Demographics": {
+      "type": "object",
+      "properties": {
+        "birthDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "birthSex": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "deathDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "deceased": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "ethnicity": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "genderIdentity": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "primaryLanguage": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "maritalStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "raceCategory": {
+          "$ref": "#/$defs/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "HealthAssessment": {
+      "type": "object",
+      "properties": {
+        "assessment": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "resultValue": {
+          "$ref": "#/$defs/ObservationValue"
+        },
+        "resultUnit": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "performedDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Immunization": {
+      "type": "object",
+      "properties": {
+        "immunization": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "lotNumber": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "administrationDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "expirationDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "reaction": {
+          "$ref": "#/$defs/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LabResult": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "order": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "resultValue": {
+          "$ref": "#/$defs/ObservationValue"
+        },
+        "resultUnit": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "interpretation": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "referenceRange": {
+          "$ref": "#/$defs/RangeValue"
+        },
+        "specimenType": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "resultStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "performedSite": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "performedDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "orderDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MedicalDevice": {
+      "type": "object",
+      "properties": {
+        "deviceType": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "deviceID": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "implantationDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "deviceStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Medication": {
+      "type": "object",
+      "properties": {
+        "medication": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "startDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "endDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "doseAmount": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "doseAmountUnit": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "doseRoute": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "doseQuantity": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "doseQuantityUnit": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "instructions": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "adherence": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "indication": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "fillStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Procedure": {
+      "type": "object",
+      "properties": {
+        "procedure": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "procedureDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "procedureReason": {
+          "$ref": "#/$defs/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VitalSign": {
+      "type": "object",
+      "properties": {
+        "vitalSign": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "resultValue": {
+          "$ref": "#/$defs/ObservationValue"
+        },
+        "resultUnit": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "interpretation": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "referenceRange": {
+          "$ref": "#/$defs/RangeValue"
+        },
+        "resultStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "performedSite": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "performedDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
