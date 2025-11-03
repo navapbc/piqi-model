@@ -210,7 +210,7 @@
         "maritalStatus": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "raceCategory": {
+        "race": {
           "$ref": "#/$defs/CodeableConcept"
         }
       },

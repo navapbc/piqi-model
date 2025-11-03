@@ -18,7 +18,7 @@ public class SerializationTest {
         demographics.setGenderIdentity(new PiqiCodeableConcept());
         demographics.setMaritalStatus(new PiqiCodeableConcept());
         demographics.setPrimaryLanguage(new PiqiCodeableConcept());
-        demographics.setRaceCategory(new PiqiCodeableConcept());
+        demographics.setRace(new PiqiCodeableConcept());
         PiqiPatient originalPatient = new PiqiPatient();
         originalPatient.setDemographics(demographics);
         ObjectMapper objectMapper = new ObjectMapper();
