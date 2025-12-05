@@ -1,61 +1,61 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Patient",
+  "title": "patient",
   "description": "The PIQI Patient data model.",
   "type": "object",
   "properties": {
-    "Allergy": {
+    "allergy": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Allergy"
       }
     },
-    "Condition": {
+    "condition": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Condition"
       }
     },
-    "Demographics": {
+    "demographics": {
       "$ref": "#/$defs/Demographics"
     },
-    "HealthAssessments": {
+    "healthAssessments": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/HealthAssessment"
       }
     },
-    "Immunization": {
+    "immunization": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Immunization"
       }
     },
-    "LabResults": {
+    "labResults": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/LabResult"
       }
     },
-    "MedicalDevice": {
+    "medicalDevice": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/MedicalDevice"
       }
     },
-    "Medication": {
+    "medication": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Medication"
       }
     },
-    "Procedure": {
+    "procedure": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Procedure"
       }
     },
-    "VitalSign": {
+    "vitalSign": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/VitalSign"
