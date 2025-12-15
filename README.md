@@ -19,7 +19,7 @@ The jar file may be included in a Gradle project as a dependency in this way in 
 ```
 ...
 dependencies {
-    implementation("com.navapbc.piqi:piqi-model:0.1.0")
+    implementation("com.navapbc.piqi:piqi-model:0.2.0")
 ...
 
 ```
@@ -31,7 +31,7 @@ For Maven in `pom.xml`:
 <dependency>
     <groupId>com.navapbc.piqi</groupId>
     <artifactId>piqi-model</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
 </dependency>
 ...
 ```

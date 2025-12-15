@@ -4,13 +4,19 @@
   "description": "The PIQI Patient data model.",
   "type": "object",
   "properties": {
-    "allergy": {
+    "allergies": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Allergy"
       }
     },
-    "condition": {
+    "clinicalDocuments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ClinicalDocument"
+      }
+    },
+    "conditions": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Condition"
@@ -19,13 +25,25 @@
     "demographics": {
       "$ref": "#/$defs/Demographics"
     },
+    "encounters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Encounter"
+      }
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Goal"
+      }
+    },
     "healthAssessments": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/HealthAssessment"
       }
     },
-    "immunization": {
+    "immunizations": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Immunization"
@@ -37,25 +55,31 @@
         "$ref": "#/$defs/LabResult"
       }
     },
-    "medicalDevice": {
+    "medicalDevices": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/MedicalDevice"
       }
     },
-    "medication": {
+    "medications": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Medication"
       }
     },
-    "procedure": {
+    "practitioners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Practitioner"
+      }
+    },
+    "procedures": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/Procedure"
       }
     },
-    "vitalSign": {
+    "vitalSigns": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/VitalSign"
@@ -162,6 +186,26 @@
       },
       "additionalProperties": false
     },
+    "ClinicalDocument": {
+      "type": "object",
+      "properties": {
+        "documentType": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "documentTitle": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "effectiveDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "documentStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "hasAttachment": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      }
+    },
     "Condition": {
       "type": "object",
       "properties": {
@@ -215,6 +259,61 @@
         }
       },
       "additionalProperties": false
+    },
+    "Encounter": {
+      "type": "object",
+      "properties": {
+        "encounterIdentifier": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "encounterDiagnosis": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "encounterDisposition": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "encounterDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "encounterEndDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "encounterLocation": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "encounterType": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "encounterReason": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "encounterStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        }
+      }
+    },
+    "Goal": {
+      "type": "object",
+      "properties": {
+        "goalCategory": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "goalPriority": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "goal": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "goalStatus": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "startDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "effectiveDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      }
     },
     "HealthAssessment": {
       "type": "object",
@@ -353,6 +452,17 @@
         }
       },
       "additionalProperties": false
+    },
+    "Practitioner": {
+      "type": "object",
+      "properties": {
+        "practitionerName": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "practitionerIdentifier": {
+          "$ref": "#/$defs/SimpleAttribute"
+        }
+      }
     },
     "Procedure": {
       "type": "object",

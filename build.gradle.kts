@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.navapbc.piqi"
-version = "0.1.1"
+version = "0.2.0"
 
 repositories {
     mavenCentral()
@@ -58,9 +58,9 @@ tasks.register<Jar>("sourcesJar") {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "${group}"
+            groupId = "$group"
             artifactId = "piqi-model"
-            version = "${version}"
+            version = "$version"
 
             from(components["java"])
             artifact(tasks.named("sourcesJar").get())
