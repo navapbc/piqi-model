@@ -177,11 +177,11 @@
         "reaction": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "effectiveDate": {
-          "$ref": "#/$defs/SimpleAttribute"
-        },
         "severity": {
           "$ref": "#/$defs/CodeableConcept"
+        },
+        "effectiveDate": {
+          "$ref": "#/$defs/SimpleAttribute"
         }
       },
       "additionalProperties": false
@@ -204,7 +204,8 @@
         "hasAttachment": {
           "$ref": "#/$defs/SimpleAttribute"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Condition": {
       "type": "object",
@@ -212,14 +213,11 @@
         "condition": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "conditionStatus": {
-          "$ref": "#/$defs/CodeableConcept"
-        },
-        "conditionType": {
-          "$ref": "#/$defs/CodeableConcept"
-        },
         "onsetDate": {
           "$ref": "#/$defs/SimpleAttribute"
+        },
+        "conditionStatus": {
+          "$ref": "#/$defs/CodeableConcept"
         },
         "resolutionDate": {
           "$ref": "#/$defs/SimpleAttribute"
@@ -233,29 +231,32 @@
         "birthDate": {
           "$ref": "#/$defs/SimpleAttribute"
         },
-        "birthSex": {
-          "$ref": "#/$defs/CodeableConcept"
-        },
-        "deathDate": {
-          "$ref": "#/$defs/SimpleAttribute"
-        },
         "deceased": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "ethnicity": {
+        "birthSex": {
           "$ref": "#/$defs/CodeableConcept"
         },
         "genderIdentity": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "primaryLanguage": {
+        "race": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "ethnicity": {
           "$ref": "#/$defs/CodeableConcept"
         },
         "maritalStatus": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "race": {
+        "primaryLanguage": {
           "$ref": "#/$defs/CodeableConcept"
+        },
+        "deathDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "patientIdentifier": {
+          "$ref": "#/$defs/SimpleAttribute"
         }
       },
       "additionalProperties": false
@@ -290,7 +291,8 @@
         "encounterStatus": {
           "$ref": "#/$defs/CodeableConcept"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Goal": {
       "type": "object",
@@ -313,7 +315,8 @@
         "effectiveDate": {
           "$ref": "#/$defs/SimpleAttribute"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "HealthAssessment": {
       "type": "object",
@@ -327,7 +330,10 @@
         "resultUnit": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "performedDateTime": {
+        "effectiveDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "issueDateTime": {
           "$ref": "#/$defs/SimpleAttribute"
         }
       },
@@ -336,19 +342,22 @@
     "Immunization": {
       "type": "object",
       "properties": {
+        "administrationDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
         "immunization": {
           "$ref": "#/$defs/CodeableConcept"
         },
         "lotNumber": {
           "$ref": "#/$defs/SimpleAttribute"
         },
-        "administrationDate": {
-          "$ref": "#/$defs/SimpleAttribute"
+        "reaction": {
+          "$ref": "#/$defs/CodeableConcept"
         },
         "expirationDate": {
           "$ref": "#/$defs/SimpleAttribute"
         },
-        "reaction": {
+        "immunizationStatus": {
           "$ref": "#/$defs/CodeableConcept"
         }
       },
@@ -357,23 +366,20 @@
     "LabResult": {
       "type": "object",
       "properties": {
+        "order": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
         "test": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "order": {
+        "resultUnit": {
           "$ref": "#/$defs/CodeableConcept"
         },
         "resultValue": {
           "$ref": "#/$defs/ObservationValue"
         },
-        "resultUnit": {
-          "$ref": "#/$defs/CodeableConcept"
-        },
         "interpretation": {
           "$ref": "#/$defs/CodeableConcept"
-        },
-        "referenceRange": {
-          "$ref": "#/$defs/RangeValue"
         },
         "specimenType": {
           "$ref": "#/$defs/CodeableConcept"
@@ -381,10 +387,28 @@
         "resultStatus": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "performedSite": {
+        "performedDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "issuedDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "referenceRange": {
+          "$ref": "#/$defs/RangeValue"
+        },
+        "performingSite": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "performedDateTime": {
+        "specimenIdentifier": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "specimenSourceSite": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "specimenCondition": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "specimenCollectionDateTime": {
           "$ref": "#/$defs/SimpleAttribute"
         },
         "orderDate": {
@@ -396,10 +420,10 @@
     "MedicalDevice": {
       "type": "object",
       "properties": {
-        "deviceType": {
+        "deviceID": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "deviceID": {
+        "deviceType": {
           "$ref": "#/$defs/CodeableConcept"
         },
         "implantationDate": {
@@ -416,12 +440,6 @@
       "properties": {
         "medication": {
           "$ref": "#/$defs/CodeableConcept"
-        },
-        "startDate": {
-          "$ref": "#/$defs/SimpleAttribute"
-        },
-        "endDate": {
-          "$ref": "#/$defs/SimpleAttribute"
         },
         "doseAmount": {
           "$ref": "#/$defs/SimpleAttribute"
@@ -441,10 +459,19 @@
         "instructions": {
           "$ref": "#/$defs/SimpleAttribute"
         },
-        "adherence": {
+        "indication": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "indication": {
+        "startDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "endDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "statementDate": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "adherence": {
           "$ref": "#/$defs/CodeableConcept"
         },
         "fillStatus": {
@@ -462,19 +489,26 @@
         "practitionerIdentifier": {
           "$ref": "#/$defs/SimpleAttribute"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Procedure": {
       "type": "object",
       "properties": {
-        "procedure": {
-          "$ref": "#/$defs/CodeableConcept"
-        },
         "procedureDateTime": {
           "$ref": "#/$defs/SimpleAttribute"
         },
+        "procedure": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
         "procedureReason": {
           "$ref": "#/$defs/CodeableConcept"
+        },
+        "procedureStatus": {
+          "$ref": "#/$defs/CodeableConcept"
+        },
+        "procedurePerformedDate": {
+          "$ref": "#/$defs/SimpleAttribute"
         }
       },
       "additionalProperties": false
@@ -494,16 +528,19 @@
         "interpretation": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "referenceRange": {
-          "$ref": "#/$defs/RangeValue"
-        },
         "resultStatus": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "performedSite": {
+        "performedDateTime": {
+          "$ref": "#/$defs/SimpleAttribute"
+        },
+        "performingSite": {
           "$ref": "#/$defs/CodeableConcept"
         },
-        "performedDateTime": {
+        "referenceRange": {
+          "$ref": "#/$defs/RangeValue"
+        },
+        "issuedDateTime": {
           "$ref": "#/$defs/SimpleAttribute"
         }
       },
