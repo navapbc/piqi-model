@@ -7,7 +7,7 @@ While this project only builds a jar file library intended to be used with Java 
 
 ## Building It
 
-This project uses [jsonschema2pojo](https://github.com/joelittlejohn/jsonschema2pojo) to generate Java classses from the JSON schema located in `src/main/resources/Patient.json`.  The following command will create a jar file containing the generated class files and place it in the local Maven repository (located in `~/.m2`) where it can be used as a dependency for other projects.
+This project uses [jsonschema2pojo](https://github.com/joelittlejohn/jsonschema2pojo) to generate Java classses from the JSON schemas located in `src/main/resources/schema`.  The following command will create a jar file containing the generated class files and place it in the local Maven repository (located in `~/.m2`) where it can be used as a dependency for other projects.
 
 ```
 ./gradlew clean publishToMavenLocal
@@ -19,7 +19,7 @@ The jar file may be included in a Gradle project as a dependency in this way in 
 ```
 ...
 dependencies {
-    implementation("com.navapbc.piqi:piqi-model:0.2.0")
+    implementation("com.navapbc.piqi:piqi-model:0.3.0")
 ...
 
 ```
@@ -31,7 +31,7 @@ For Maven in `pom.xml`:
 <dependency>
     <groupId>com.navapbc.piqi</groupId>
     <artifactId>piqi-model</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ...
 ```
@@ -40,7 +40,6 @@ For Maven in `pom.xml`:
 ## Notes
 * The schema was created as a best effort from the documentation on the HL7 site.  It is an evolving standard so expect changes.
 * *jsonschema2pojo* has many different flags that may be set.  `build.gradle.kts` configures it to use mostly defaults.  It may be necessary to modify the configuration to suit your needs.
-* `SimpleAttribute` is the one class that was not able to be generated in a way that serialized properly according to the PIQI data model.  An additional Gradle task was introduced in `build.gradle.kts` to substitute a hand-coded version that was better suited.
 
 
 
