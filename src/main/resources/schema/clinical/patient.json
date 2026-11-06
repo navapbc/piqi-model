@@ -1,0 +1,1168 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Patient Clinical Model 1.0 (PAT_CLINICAL_V1 v1): This is the release candidate version of the PIQI Clinical model reviewed by the PIQI Alliance Patient Clinical Data Class Model work group - as of 4/15/2026 . Root entity: patient. Generated using the PIQI model meta-schema (piqi-model-schema.json).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "demographics": {
+      "$ref": "#/definitions/Demographic"
+    },
+    "allergies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Allergy"
+      }
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Condition"
+      }
+    },
+    "immunizations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Immunization"
+      }
+    },
+    "labResults": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/LabResult"
+      }
+    },
+    "medications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Medication"
+      }
+    },
+    "procedures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Procedure"
+      }
+    },
+    "vitalSigns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/VitalSign"
+      }
+    },
+    "diagnosticImaging": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/DiagnosticImaging"
+      }
+    },
+    "medicalDevices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MedicalDevice"
+      }
+    },
+    "healthAssessments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/HealthAssessment"
+      }
+    },
+    "clinicalDocuments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ClinicalDocument"
+      }
+    },
+    "encounters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Encounter"
+      }
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Goal"
+      }
+    },
+    "carePlans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CarePlan"
+      }
+    },
+    "practitioners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Practitioner"
+      }
+    },
+    "clinicalTests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ClinicalTest"
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Coverage"
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Provenance"
+      }
+    }
+  },
+  "required": [
+    "demographics"
+  ],
+  "definitions": {
+    "Coding": {
+      "type": "object",
+      "description": "A single code from a code system.",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Code value for the coding"
+        },
+        "display": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Display value for the coding"
+        },
+        "system": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Code system identifier for the coding"
+        }
+      }
+    },
+    "CodeableConcept": {
+      "type": "object",
+      "description": "PIQI Codeable Concept: display text plus zero-to-many codings.",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Text representation of the concept"
+        },
+        "codings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coding"
+          },
+          "description": "Collection of zero-to-many codings"
+        }
+      }
+    },
+    "Demographic": {
+      "type": "object",
+      "description": "PIQI data class: Demographics (DEM).",
+      "additionalProperties": false,
+      "properties": {
+        "birthDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The patient's date of birth."
+        },
+        "deceased": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "birthSex": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "genderIdentity": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "race": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "ethnicity": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "maritalStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "primaryLanguage": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "deathDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date of death of the patient."
+        },
+        "patientIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier for the patient."
+        },
+        "tribalAffiliation": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "sexualOrientation": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "firstName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The patient's first (given) name."
+        },
+        "lastName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The patient's last (family) name."
+        },
+        "middleName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The patient's middle name or initial."
+        },
+        "currentAddress": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The patient's current mailing or home address."
+        },
+        "emailAddress": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The patient's email address."
+        },
+        "telecom": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The patient's telephone or other telecommunication contact information."
+        }
+      }
+    },
+    "Allergy": {
+      "type": "object",
+      "description": "PIQI data class: Allergies (ALG).",
+      "additionalProperties": false,
+      "properties": {
+        "substance": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "category": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "reaction": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "severity": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "effectiveDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date when the allergy or substance intolerance was first recorded."
+        },
+        "clinicalStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "verificationStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "Condition": {
+      "type": "object",
+      "description": "PIQI data class: Conditions (CND).",
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "onsetDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date when the condition started."
+        },
+        "conditionStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "resolutionDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date when the condition resolved."
+        },
+        "clinicalStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "verificationStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "conditionCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "assertedDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the condition was first asserted or claimed by the patient or a clinician."
+        },
+        "recordedDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the condition was first recorded in the patient's clinical record."
+        }
+      }
+    },
+    "Immunization": {
+      "type": "object",
+      "description": "PIQI data class: Immunizations (IMM).",
+      "additionalProperties": false,
+      "properties": {
+        "administrationDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the immunization was administered."
+        },
+        "immunization": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "lotNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The lot number of the immunization product."
+        },
+        "reaction": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "expirationDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The expiration date of the immunization product."
+        },
+        "immunizationStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "immunizationStatusReason": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "primarySource": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Indicates context the data was recorded in"
+        }
+      }
+    },
+    "ObservationValue": {
+      "type": "object",
+      "description": "PIQI Observation Value: text, a value type, numeric value(s) and/or coded values.",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Text representation of the value"
+        },
+        "type": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "number": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "For numeric values"
+        },
+        "number2": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "For second numeric value"
+        },
+        "codings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coding"
+          },
+          "description": "Zero-to-many codings representing the value if it is a codeable concept"
+        }
+      }
+    },
+    "RangedValue": {
+      "type": "object",
+      "description": "PIQI Range Value: a numeric range (not for date ranges).",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Text representation of the value range"
+        },
+        "lowValue": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Text representation of the low value"
+        },
+        "highValue": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Text representation of the high value"
+        }
+      }
+    },
+    "LabResult": {
+      "type": "object",
+      "description": "PIQI data class: Lab Results (LAB).",
+      "additionalProperties": false,
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "test": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "resultUnit": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "resultValue": {
+          "$ref": "#/definitions/ObservationValue"
+        },
+        "interpretation": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "specimenType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "resultStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "performedDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the test was performed."
+        },
+        "issuedDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the lab test result was issued"
+        },
+        "referenceRange": {
+          "$ref": "#/definitions/RangedValue"
+        },
+        "performingSite": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "specimenIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The identifier for the specimen used to perform the laboratory test."
+        },
+        "specimenSourceSite": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "specimenCondition": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "specimenCollectionDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the specimen for the laboratory test was collected."
+        },
+        "orderDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the laboratory order was placed."
+        },
+        "labCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "performerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the laboratory or organization that performed the test."
+        },
+        "performerIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier of the laboratory or organization that performed the test."
+        }
+      }
+    },
+    "Medication": {
+      "type": "object",
+      "description": "PIQI data class: Medications (MED).",
+      "additionalProperties": false,
+      "properties": {
+        "medication": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "doseAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The amount of medication per dose."
+        },
+        "doseAmountUnit": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "doseRoute": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "doseQuantity": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The quantity of medication dispensed."
+        },
+        "doseQuantityUnit": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "instructions": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The instructions for taking the medication"
+        },
+        "indication": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "startDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the patient started the medication."
+        },
+        "endDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the patient stopped taking the medication."
+        },
+        "statementDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date of the medication statement."
+        },
+        "adherence": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "fillStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "requestStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "medicationCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "medicationIntent": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "Procedure": {
+      "type": "object",
+      "description": "PIQI data class: Procedures (PRC).",
+      "additionalProperties": false,
+      "properties": {
+        "procedureDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the procedure was performed."
+        },
+        "procedure": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "procedureReason": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "procedureStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "procedurePerformedDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the procedure was performed."
+        }
+      }
+    },
+    "VitalSign": {
+      "type": "object",
+      "description": "PIQI data class: Vital Signs (VIT).",
+      "additionalProperties": false,
+      "properties": {
+        "vitalSign": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "resultValue": {
+          "$ref": "#/definitions/ObservationValue"
+        },
+        "resultUnit": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "interpretation": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "resultStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "performedDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the vital sign was measured."
+        },
+        "performingSite": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "referenceRange": {
+          "$ref": "#/definitions/RangedValue"
+        },
+        "issuedDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the vital sign was issued."
+        },
+        "vitalSignCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "dataAbsentReason": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "DiagnosticImaging": {
+      "type": "object",
+      "description": "PIQI data class: Diagnostic Imaging (IMAGING).",
+      "additionalProperties": false,
+      "properties": {
+        "interpretation": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The interpretation of the diagnostic images."
+        },
+        "reportDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the diagnostic imaging was performed."
+        },
+        "procedure": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "hasAttachment": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "An indicator representing whether or not a digital attachment was present in the original diagnostic imaging resource. (Interpreted and populated by the PIQI converter)"
+        },
+        "issueDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the diagnostic imaging report was issued."
+        },
+        "reportStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "reportCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "reportPeriodStart": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The start date of the period covered by the imaging report."
+        },
+        "reportPeriodEnd": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The end date of the period covered by the imaging report."
+        },
+        "reportResultValue": {
+          "$ref": "#/definitions/ObservationValue"
+        },
+        "reportResultUnit": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "dataAbsentReason": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "performerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the clinician or organization that performed the imaging study."
+        },
+        "performerIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier of the clinician or organization that performed the imaging study."
+        }
+      }
+    },
+    "MedicalDevice": {
+      "type": "object",
+      "description": "PIQI data class: Medical Devices (DEV).",
+      "additionalProperties": false,
+      "properties": {
+        "deviceID": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier for the medical device."
+        },
+        "deviceType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "implantationDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the device was implanted."
+        },
+        "deviceStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "serialNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The serial number assigned by the manufacturer to identify the specific medical device."
+        },
+        "lotNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The lot or batch number assigned by the manufacturer to the medical device."
+        },
+        "expirationDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The expiration date of the medical device as indicated on the device label."
+        },
+        "manufactureDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the medical device was manufactured."
+        },
+        "carrierHRF": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The human-readable form of the carrier or distributor identifier for the medical device."
+        },
+        "distinctIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "A distinct identification code required by regulation for a human cell, tissue, or cellular and tissue-based product."
+        }
+      }
+    },
+    "HealthAssessment": {
+      "type": "object",
+      "description": "PIQI data class: Health Assessments (HA).",
+      "additionalProperties": false,
+      "properties": {
+        "assessment": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "assessmentStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "resultValue": {
+          "$ref": "#/definitions/ObservationValue"
+        },
+        "resultUnit": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "effectiveDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the health assessment was performed."
+        },
+        "issueDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the health assessment result was issued."
+        },
+        "category": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "questionnaireURL": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The URL or identifier of the questionnaire or survey instrument used for the assessment."
+        },
+        "performerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the clinician or organization that performed the health assessment."
+        },
+        "performerIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier of the clinician or organization that performed the health assessment."
+        }
+      }
+    },
+    "ClinicalDocument": {
+      "type": "object",
+      "description": "PIQI data class: Clinical Documents (DOC).",
+      "additionalProperties": false,
+      "properties": {
+        "documentType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "documentTitle": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The document title the the clinical document."
+        },
+        "effectiveDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The effective date and time of the document."
+        },
+        "documentStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "hasAttachment": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The indicator representing whether or not the original clinical document resource included a digital attachment. (Interpreted and populated by the PIQI converter)"
+        },
+        "documentIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier assigned to the clinical document."
+        },
+        "documentCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "documentAuthorName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the author who created or is responsible for the clinical document."
+        },
+        "documentAuthorIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier of the author who created or is responsible for the clinical document."
+        },
+        "documentPeriodStart": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The start date of the period that the clinical document content covers or pertains to."
+        },
+        "documentPeriodEnd": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The end date of the period that the clinical document content covers or pertains to."
+        },
+        "documentFormat": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "Encounter": {
+      "type": "object",
+      "description": "PIQI data class: Encounters (ENC).",
+      "additionalProperties": false,
+      "properties": {
+        "encounterIdentifier": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "encounterIdentifierNamespace": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The namespace or system that assigned the encounter identifier, used to ensure uniqueness across systems."
+        },
+        "encounterDiagnosis": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "encounterDisposition": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The encounter representing the encounter disposition."
+        },
+        "encounterDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time of the start of the encounter"
+        },
+        "encounterStartDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the encounter began."
+        },
+        "encounterEndDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the encounter concluded."
+        },
+        "encounterLocation": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The encounter location."
+        },
+        "encounterType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "encounterReason": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "encounterStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "encounterClass": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "Goal": {
+      "type": "object",
+      "description": "PIQI data class: Goals (GOAL).",
+      "additionalProperties": false,
+      "properties": {
+        "goalCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "goalPriority": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The priority of the goal."
+        },
+        "goal": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "goalStatus": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The concept representing the status of the goal."
+        },
+        "startDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the patient goal was initiated."
+        },
+        "effectiveDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time of the documentation of the goal."
+        },
+        "dueDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The target date by which the patient goal is intended to be achieved."
+        }
+      }
+    },
+    "CarePlan": {
+      "type": "object",
+      "description": "PIQI data class: Care Plans (CAREPLAN).",
+      "additionalProperties": false,
+      "properties": {
+        "planNarrative": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "A human-readable summary of the care plan, including its goals, activities, and context."
+        },
+        "planNarrativeStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "planStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "planIntent": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "planCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "effectiveDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the care plan became or becomes effective."
+        }
+      }
+    },
+    "Practitioner": {
+      "type": "object",
+      "description": "PIQI data class: Practitioners (PRACTITIONER).",
+      "additionalProperties": false,
+      "properties": {
+        "practitionerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The care team provider full name."
+        },
+        "practitionerIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "This is the care team provider identifier. This would typically be the NPI."
+        },
+        "practionerRole": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "practitionerStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "practitionerAddress": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The practice or mailing address of the care team practitioner."
+        },
+        "practitionerTelecom": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The telephone or other telecom contact information for the care team practitioner."
+        }
+      }
+    },
+    "ClinicalTest": {
+      "type": "object",
+      "description": "PIQI data class: Clinical Tests (CLINICAL_TESTS).",
+      "additionalProperties": false,
+      "properties": {
+        "testStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "testCategory": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "test": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "effectiveDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the clinical test was performed or the specimen was collected."
+        },
+        "testPeriodStart": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The start date of the period over which the clinical test was performed or observed."
+        },
+        "testPeriodEnd": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The end date of the period over which the clinical test was performed or observed."
+        },
+        "resultValue": {
+          "$ref": "#/definitions/ObservationValue"
+        },
+        "resulUnit": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "testDataAbsentReason": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "issueDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date the clinical test order was issued or requested."
+        },
+        "hasAttachment": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "Indicator representing whether the clinical test result includes a digital attachment such as an image or report."
+        },
+        "performerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the person or organization that performed the clinical test."
+        },
+        "performerIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier of the person or organization that performed the clinical test."
+        }
+      }
+    },
+    "Coverage": {
+      "type": "object",
+      "description": "PIQI data class: Coverage (COVERAGE).",
+      "additionalProperties": false,
+      "properties": {
+        "coverageStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "coverageType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "coveragePeriodStart": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date on which the coverage period begins or the policy became effective."
+        },
+        "coveragePeriodEnd": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date on which the coverage period ends or the policy was terminated."
+        },
+        "relationship": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "memberIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The identifier assigned to the covered member by the payer."
+        },
+        "memberIdentifierType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "subscriberIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The identifier assigned by the payer to the primary subscriber of the insurance policy."
+        },
+        "payorIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier assigned to the payer or insurer responsible for the coverage."
+        },
+        "planName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the health plan benefit offering associated with the coverage."
+        },
+        "planIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The identifier assigned to the specific health plan benefit offering."
+        },
+        "groupName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the employer group or plan sponsor associated with the coverage."
+        },
+        "groupIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The identifier assigned to the employer group or plan sponsor associated with the coverage."
+        }
+      }
+    },
+    "Provenance": {
+      "type": "object",
+      "description": "PIQI data class: Provenance (PROVENANCE).",
+      "additionalProperties": false,
+      "properties": {
+        "recordedDateTime": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The date and time the provenance record was captured."
+        },
+        "agentType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "agentName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the agent responsible for the clinical data record."
+        },
+        "agentIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier of the agent responsible for the clinical data record."
+        },
+        "agentOrganizationName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The name of the organization associated with the provenance agent."
+        },
+        "agentOrganizationIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.clinical.PiqiSimpleAttribute",
+          "description": "The unique identifier of the organization associated with the provenance agent."
+        },
+        "authorType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "transmitterType": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,840 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Patient EOB Model (PAT_EOB_V1 v1): This model is for patient claims data and is based on CPCDS. Root entity: patient. Generated using the PIQI model meta-schema (piqi-model-schema.json).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "member": {
+      "$ref": "#/definitions/Member"
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Coverage"
+      },
+      "minItems": 1
+    },
+    "medicalClaim": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MedicalClaim"
+      },
+      "minItems": 1
+    },
+    "claimServiceLine": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ClaimLine"
+      },
+      "minItems": 1
+    },
+    "claimDiagnosis": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ClaimDiagnosis"
+      },
+      "minItems": 1
+    },
+    "claimProcedure": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ClaimProcedure"
+      },
+      "minItems": 1
+    },
+    "pharmacyClaim": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PharmacyClaim"
+      },
+      "minItems": 1
+    },
+    "dentalClaim": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/DentalClaim"
+      },
+      "minItems": 1
+    },
+    "provider": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Provider"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "member",
+    "coverage",
+    "medicalClaim",
+    "claimServiceLine",
+    "claimDiagnosis",
+    "claimProcedure",
+    "pharmacyClaim",
+    "dentalClaim",
+    "provider"
+  ],
+  "definitions": {
+    "Coding": {
+      "type": "object",
+      "description": "A single code from a code system.",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Code value for the coding"
+        },
+        "display": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Display value for the coding"
+        },
+        "system": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Code system identifier for the coding"
+        }
+      }
+    },
+    "CodeableConcept": {
+      "type": "object",
+      "description": "PIQI Codeable Concept: display text plus zero-to-many codings.",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Text representation of the concept"
+        },
+        "codings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coding"
+          },
+          "description": "Collection of zero-to-many codings"
+        }
+      }
+    },
+    "Member": {
+      "type": "object",
+      "description": "PIQI data class: Member (MEMB).",
+      "additionalProperties": false,
+      "properties": {
+        "memberId": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Identifier for a member assigned by the Payer. If members receive ID cards, that is the identifier that should be provided."
+        },
+        "uniqueMemberId": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Unique identifier for a member assigned by the Payer."
+        },
+        "memberIdentifierType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date of birth of the member."
+        },
+        "dateOfDeath": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date of death of the member."
+        },
+        "deceasedFlag": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Flag indicating if the member is deceased"
+        },
+        "birthSex": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "raceCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "ethnicity": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "city": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The city for the member's primary address"
+        },
+        "county": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "125 County The county for the member's primary address."
+        },
+        "state": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The state for the member's primary address."
+        },
+        "country": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The country for the member's primary address."
+        },
+        "postalCode": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "This represents the member's 5 digit zip code."
+        },
+        "addressStartDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Member address start date"
+        },
+        "addressEndDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "member address end date"
+        },
+        "telecomSystem": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "telecomUse": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "streetAddress": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Street name, number, direction & P.O. Box etc."
+        },
+        "primaryLanguage": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "Coverage": {
+      "type": "object",
+      "description": "PIQI data class: Coverage (COVER).",
+      "additionalProperties": false,
+      "properties": {
+        "subscriberId": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The identifier assigned by the Payer on the subscriber's ID card."
+        },
+        "coverageType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "coverageStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "startDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date that the contract became effective."
+        },
+        "endDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date that the contract was terminated or coverage changed"
+        },
+        "groupId": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Employer account identifier."
+        },
+        "groupName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Name of the Employer Account."
+        },
+        "planIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Business concept used by a health plan to describe its benefit offerings."
+        },
+        "planName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Name of the health plan benefit offering assigned to the Plan Identifier."
+        },
+        "payerIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Issuer of the Policy"
+        },
+        "otherPayerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Identifies another payer who applied benefits for the service on another claim"
+        },
+        "relationshipToSubscriber": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimPayerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Name of the payer responsible for the claim"
+        }
+      }
+    },
+    "MedicalClaim": {
+      "type": "object",
+      "description": "PIQI data class: Medical Claim (CLAIM).",
+      "additionalProperties": false,
+      "properties": {
+        "claimDrgVersion": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "32 - Version of the DRG codes assigned for inpatient facility claims. 33- Claim diagnosis related group (DRG) code value 113 - Name of the DRG grouper assigned; i.e., MS-DRG, AP-DRG or APR-DRG"
+        },
+        "claimDrgCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimStartDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "90 - Date on which services began. UB04 (Form Locator 45). 118 - Date on which services began. Located on CMS 1500 (Form Locator 24A)"
+        },
+        "statementThruDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "On Institutional claims, the last day on the billing statement covering services rendered to the beneficiary (i.e. 'Statement Covers Thru Date’) On Professional and Non-Clinician claims, the latest of any of the line-item level dates."
+        },
+        "procedureCodeType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "adjudicationDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date the claim was adjudicated"
+        },
+        "dischargedate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date the beneficiary was discharged from the facility, or died. Matches the Statement Thru Date. When there is a discharge date, the Patient Discharge Status Code indicates the final disposition of the patient after discharge."
+        },
+        "primaryPayerIdentifier": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimSubType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "patientDischargeStatusCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimPayerIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The identifier assigned to the Operating Surgeon."
+        },
+        "medicalRecordNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Provider submitted information that can be included on the claim."
+        },
+        "claimIdentifierType": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Indicates that the claim identifier is that assigned by a payer for a claim received from a provider or subscriber."
+        },
+        "processingStatusCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "billFacilityTypeCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimAdjustedfromIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "If the current claim represents a claim that has been adjusted and was given a prior claim number, this field represents the prior claim number"
+        },
+        "claimAdjustedtoIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "If the current claim has been adjusted; i.e., replaced by or merged to another claim number, this data element represents that new number."
+        },
+        "claimAdjustedRelationship": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimReceivedDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The date the claim was received by the payer."
+        },
+        "claimPaymentStatusCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimPaidDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The date the claim was paid."
+        },
+        "claimDiscountAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount of the discount."
+        },
+        "serviceClassificationTypeCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "patientAccountNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Provider submitted information that can be included on the claim."
+        },
+        "claimPayeeTypeCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "inpatientSourceAdmissionCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "admissionDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The date corresponding with admission of the beneficiary to a facility and the onset of services. May precede the Statement From Date if this claim is for a beneficiary who has been continuously under care."
+        },
+        "paymentDenialCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimServiceEndDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "119 Claim Service End Date Date on which services ended. Located on CMS 1500 (Form Locator 24A)"
+        },
+        "claimTypeCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "payerClaimUniqueIdentifier": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "35 Payer Claim Unique Identifier Identifier assigned by a payer for a claim received from a provider or subscriber. It is not the same identifier as that assigned by a provider."
+        },
+        "adjudicationAmountType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "inpatientAdmissionTypeCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "frequencyCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimPayee": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Recipient reference."
+        },
+        "totalAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Total amount for each category (i.e., submitted, eligible, etc.)"
+        },
+        "statementFromDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "On Institutional claims, the first day on the billing statement covering services rendered to the beneficiary (i.e. 'Statement Covers From Date’). On Professional and Non-Clinician claims, Earliest of any of the line-item level dates. It is almost always the same as Claim Service End Date except for DME claims - where some services are billed in advance."
+        },
+        "claimTotalSubmittedAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Amount submitted by the provider for reimbursement of health care services. This amount includes non-covered services."
+        },
+        "claimTotalAllowedAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The contracted reimbursable amount for covered medical services or supplies or amount reflecting local methodology for non-contracted providers. Allowed amount should not include any COB adjustment. That is, the Allowed amount on a claim should be the same when the Plan is primary or secondary."
+        },
+        "amountPaidByPatient": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount paid by the member at the point of service."
+        },
+        "claimAmountPaidToProvider": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount paid to the provider."
+        },
+        "memberReimbursement": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount paid to the member."
+        },
+        "claimPaymentAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount sent to the payee from the health plan. This amount is to exclude any member cost sharing. It should include the total of member and provider payments."
+        },
+        "claimNonCoveredAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The portion of the cost of this service that was deemed not eligible by the insurer because the service or member was not covered by the subscriber contract."
+        },
+        "memberPaidDeductible": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The portion of this service that the member must pay which is applied to the total period deductible. Deductibles are usually applied over a specific time period, such as per calendar year, per benefit period."
+        },
+        "coInsuranceLiabilityAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount the insured individual pays, as a set percentage of the cost of covered medical services, as an out-of-pocket payment to the provider. Example: Insured pays 20% and the insurer pays 80%."
+        },
+        "copayAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Amount an insured individual pays directly to a provider at the time the services or supplies are rendered. Usually, a copay will be a fixed amount per service, such as $15.00 per office visit."
+        },
+        "memberLiability": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount of the member's liability."
+        },
+        "claimOtherPayerPaidAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The reduction in the payment amount to reflect the current carrier as a secondary, teritary, etc, payer. May be multiple occurrences if the current carrier is a teritary, etc. carrier."
+        },
+        "claimUse": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "claimLastUpdateDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute"
+        }
+      }
+    },
+    "ClaimLine": {
+      "type": "object",
+      "description": "PIQI data class: Claim Line (LINE).",
+      "additionalProperties": false,
+      "properties": {
+        "serviceDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "90 - Date on which services began. UB04 (Form Locator 45). 118 - Date on which services began. Located on CMS 1500 (Form Locator 24A)"
+        },
+        "lineNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Line identification number that represents the number assigned in a source system for identification and processing."
+        },
+        "serviceToDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date on which services ended. Located on CMS 1500 (Form Locator 24A)"
+        },
+        "typeOfService": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "placeOfServiceCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "revenueCenterCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "allowedNumberOfUnits": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The quantity of units, times, days, visits, services, or treatments allowed for the service described by the HCPCS code, revenue code or procedure code, submitted by the provider."
+        },
+        "nationalDrugCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "compoundCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "quantityDispensed": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Quantity dispensed for the drug."
+        },
+        "quantityQualifierCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "benefitPaymentStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "linePaymentDenialCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "paymentMemberExplanation": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Payment explanation to a member on an EOB"
+        },
+        "lineNoncoveredAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Medical: The portion of the cost of this service that was deemed not eligible by the insurer because the service or member was not covered by the subscriber contract. Pharmacy: Non-Covered Amount represents the NCPDP financial response field Amount Exceeding Periodic Benefit Maximum."
+        },
+        "lineMemberReimbursement": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount paid to the member."
+        },
+        "linePaymentAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount sent to the payee from the health plan. This amount is to exclude any member cost sharing. It should include the total of member and provider payments."
+        },
+        "lineDiscountAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount of the discount."
+        },
+        "lineAmountPaidByPatient": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Medical: The amount paid by the member at the point of service. Pharmacy: Amount that is calculated by the processor and returned to the pharmacy as the total amount to be paid by the patient to the pharmacy; the patient’s total cost share, including copayments, amounts applied to deductible, over maximum amounts, penalties, etc"
+        },
+        "drugCost": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Price paid for the drug excluding mfr discounts. It is the sum of the following components:ingredient cost, dispensing fee, sales tax, and vaccine administration fee."
+        },
+        "lineAllowedAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The contracted reimbursable amount for covered medical services or supplies or amount reflecting local methodology for noncontracted providers. Allowed amount should not include any COB adjustment. That is, the Allowed amount on a claim should be the same when the Plan is primary or secondary."
+        },
+        "lineAmountPaidToProvider": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount paid to the provider."
+        },
+        "linePatientDeductible": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The contracted reimbursable amount for covered medical services or supplies or amount reflecting local methodology for noncontracted providers."
+        },
+        "lineOtherPayerPaidAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The reduction in the payment amount to reflect the current carrier as a secondary, tertiary, etc, payer. May be multiple occurrences if the current carrier is a tertiary, etc. carrier."
+        },
+        "lineCoinsuranceAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Medical: The amount the insured individual pays, as a set percentage of the cost of covered medical services, as an out-of-pocket payment to the provider. Example: Insured pays 20% and the insurer pays 80%. Pharmacy: Amount to be collected from a patient that is included in the Patient Pay Amount that is due to a per prescription copay or coinsurance."
+        },
+        "lineSubmittedAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Amount submitted by the provider for reimbursement of health care services. This amount includes non-covered services."
+        },
+        "lineMemberLiabilityAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The amount of the member's liability."
+        },
+        "lineCopayAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Medical: Amount an insured individual pays directly to a provider at the time the services or supplies are rendered. Usually, a copay will be a fixed amount per service, such as $15.00 per office visit. Pharmacy: Amount to be collected from a patient that is included in the Patient Pay Amount that is due to a per prescription copay or coinsurance."
+        },
+        "lineProcedureCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "lineProcedureCodeModifier": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "ClaimDiagnosis": {
+      "type": "object",
+      "description": "PIQI data class: Claim Diagnosis (DIAG).",
+      "additionalProperties": false,
+      "properties": {
+        "diagnosisCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "eCodeIndicator": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "This is any valid ICD-10 Diagnosis code in the range V00.* through Y99.*"
+        },
+        "presentOnAdmissionIndicator": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Used to capture whether a diagnosis was present at time of a patient's admission. This is used to group diagnoses into the proper DRG for all claims involving inpatient admissions to general acute care facilities."
+        },
+        "diagnosisType": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "ClaimProcedure": {
+      "type": "object",
+      "description": "PIQI data class: Claim Procedure (PROC).",
+      "additionalProperties": false,
+      "properties": {
+        "procedureClaimLine": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The reference back to a particular claim line where 0 or null is the header"
+        },
+        "procedureCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "procedureDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "24- Principal medical procedure a patient received during inpatient stay. Coding methods for this field is International Classification of Diseases Surgical Procedures (ICD-10). 26 - Additional surgical procedure a patient received during inpatient stay. Coding methods for this field is International Classification of Diseases Surgical Procedures (ICD-10)."
+        },
+        "procedureType": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "modifierCode1": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "modifierCode2": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "modifierCode3": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "modifierCode4": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "PharmacyClaim": {
+      "type": "object",
+      "description": "PIQI data class: Pharmacy Claim (PHARMCLAIM).",
+      "additionalProperties": false,
+      "properties": {
+        "daysSupply": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Number of days supply of medication dispensed by the pharmacy."
+        },
+        "rxServiceReferenceNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Identifier assigned by a payer for a claim received from a provider or subscriber. It is not the same identifier as that assigned by a provider. This identifier assigned by the payer becomes the payer's EOB identifier."
+        },
+        "dawCode": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Prescriber's instruction regarding substitution of generic equivalents or order to dispense the specific prescribed medication."
+        },
+        "refillNumber": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The number fill of the current dispensed supply (0, 1, 2, etc.)."
+        },
+        "prescriptionOriginCode": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Whether the prescription was transmitted as an electronic prescription, by phone, by fax, or as a written paper copy"
+        },
+        "planReportedBrandGenericCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "totalAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Total amount for each category (i.e., submitted, eligible, etc.)"
+        },
+        "claimIdentifierAmount": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Indicates that the claim identifier is that assigned by a payer for a claim received from a provider or subscriber."
+        },
+        "adjudicationAmountType": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Describes the various amount fields used when payers receive and adjudicate a claim"
+        }
+      }
+    },
+    "DentalClaim": {
+      "type": "object",
+      "description": "PIQI data class: Dental Claim (DENTCLAIM).",
+      "additionalProperties": false,
+      "properties": {
+        "procedureCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "procedureModifierCode": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "toothNumberFirstOccurrence": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "toothSurface": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "missingToothNumberFirstOccurrence": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "orthodonticsTreatmentIndicator": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Indicates if the treatment is for orthodontics"
+        },
+        "orthodonticsApplianceApplicationDate": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Date that the orthodontic appliances were placed."
+        },
+        "totalNumberOfMonthsForOrthodontia": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Number of months the orthodontia will remain in place."
+        },
+        "prosthesisReplacementIndicator": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Indicate whether the services billed are for an oral prosthesis such as bridges, dentures, etc."
+        },
+        "dateOfPriorProsthesisPlacement": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "Identify the date when the prior prosthesis was placed."
+        },
+        "toothNumberAfterFirstOccurrence": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "missingToothNumberAfterFirstOccurrence": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    },
+    "Provider": {
+      "type": "object",
+      "description": "PIQI data class: Provider (PROV).",
+      "additionalProperties": false,
+      "properties": {
+        "providerNpi": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The National Provider Identifier assigned to the Provider."
+        },
+        "providerContractingStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "siteOfServiceNetworkStatus": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "careTeamRole": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "providerName": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The name of the Attending Physician for the admission"
+        },
+        "providerAddress": {
+          "type": "string",
+          "existingJavaType": "com.navapbc.piqi.model.eob.PiqiSimpleAttribute",
+          "description": "The address of the facility where the service occurred."
+        },
+        "providerPayerSpecificIdentifier": {
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "providerType": {
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      }
+    }
+  }
+}

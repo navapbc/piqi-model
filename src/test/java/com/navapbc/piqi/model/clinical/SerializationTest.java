@@ -1,4 +1,4 @@
-package com.navapbc.piqi.model;
+package com.navapbc.piqi.model.clinical;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ public class SerializationTest {
 
     @Test
     public void testSerialization() throws Exception {
-        PiqiDemographics demographics = new PiqiDemographics();
+        PiqiDemographic demographics = new PiqiDemographic();
         demographics.setBirthDate(new PiqiSimpleAttribute("Birth Date"));
         demographics.setBirthSex(new PiqiCodeableConcept());
         demographics.setDeathDate(new PiqiSimpleAttribute("Death Date"));
